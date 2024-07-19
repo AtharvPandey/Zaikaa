@@ -40,8 +40,7 @@
 }
 
 .explore-menu-list-item .active {
-  border: 2px solid #f49619;
-  padding: 2px;
+  padding: 15px;
 }
 
 .explore-menu hr {

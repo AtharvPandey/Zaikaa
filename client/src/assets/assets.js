@@ -469,4 +469,14 @@ export const food_list = [
       "Food provides essential nutrients for overall health and well-being",
     category: "Noodles",
   },
+  {
+    _id: "33",
+    name: "Cheesy Burger",
+    image:
+      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/0ae71147d0dc17184e276426e8cc03d5",
+    price: 95,
+    description:
+      "Juicy beef, melted cheddar, fresh veggies, and special sauce on a toasted bun.",
+    category: "Burgers",
+  },
 ];

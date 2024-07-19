@@ -26,15 +26,14 @@ const Header = () => {
   return (
     <div className="header">
       <video className="header-video" autoPlay muted loop ref={videoRef}>
-        <source src="/videoplayback.webm" type="video/webm" />
+        <source src="/headerbackgroundvideo.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
       <div className="header-contents">
         <h2>Swad Bhari Seva, Turant Aapke Darwaze Par!</h2>
         <p>
-          Craving a hearty meal? Zaikaa delivers your favorite local dishes hot
-          and fresh, straight to your door. Experience the perfect blend of
-          taste and convenience with our rapid delivery service. Indulge in
+          Craving a hearty meal? Experience the perfect blend of taste and
+          convenience with our rapid delivery service. Indulge in
           deliciousness—order with Zaikaa today!
         </p>
         <button>View Menu</button>
