@@ -1,0 +1,71 @@
+.explore-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative; /* For absolute positioning of scroll slider */
+}
+
+.explore-menu h1 {
+  color: #34571a;
+  font-weight: 600;
+}
+
+.explore-menu-text {
+  max-width: 55%;
+  color: black;
+}
+
+.explore-menu-list {
+  display: flex;
+  justify-content: flex-start; /* Adjust to start for infinite scroll appearance */
+  align-items: center;
+  gap: 30px;
+  text-align: center;
+  margin: 20px 0px;
+  overflow-x: auto;
+  scroll-behavior: smooth; /* Smooth scroll behavior */
+  white-space: nowrap; /* Prevent wrapping of items */
+}
+
+.explore-menu-list::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for aesthetic purposes */
+}
+
+.explore-menu-list img {
+  width: 7.5vw;
+  min-width: 80px;
+  cursor: pointer;
+  transition: 0.2s;
+  border-radius: 10px;
+}
+
+.explore-menu-list-item .active {
+  border: 2px solid #f49619;
+  padding: 2px;
+}
+
+.explore-menu hr {
+  margin: 10px 0px;
+  height: 2px;
+  background-color: #af7a1fa1;
+  border: none;
+}
+
+.scroll-slider {
+  position: absolute;
+  top: 90px;
+  right: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.scroll-btn {
+  background-color: #f49619;
+  border: none;
+  color: white;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 50px;
+}
