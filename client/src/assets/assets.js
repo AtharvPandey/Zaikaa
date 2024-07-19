@@ -428,7 +428,7 @@ export const food_list = [
     _id: "28",
     name: "Chicken Pasta",
     image: food_28,
-    price: 24,
+    price: 240,
     description:
       "Food provides essential nutrients for overall health and well-being",
     category: "Pasta",
@@ -471,12 +471,112 @@ export const food_list = [
   },
   {
     _id: "33",
-    name: "Cheesy Burger",
+    name: "Cheesy burger",
     image:
       "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/0ae71147d0dc17184e276426e8cc03d5",
     price: 95,
     description:
       "Juicy beef, melted cheddar, fresh veggies, and special sauce on a toasted bun.",
     category: "Burgers",
+  },
+  {
+    _id: "34",
+    name: "Aloo Tikki Burger",
+    image:
+      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/1c166944e078202d31fe9d3d92bda390",
+    price: 70,
+    description:
+      "Spicy potato patty, fresh veggies, and tangy sauce in a toasted bun.",
+    category: "Burgers",
+  },
+  {
+    _id: "35",
+    name: "Double Patty Burger",
+    image:
+      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/4df8c707a39e12da4d02e60fd4b73c2e",
+    price: 125,
+    description:
+      "Two juicy beef patties, melted cheese, fresh veggies, and special sauce on a toasted bun.",
+    category: "Burgers",
+  },
+  {
+    _id: "36",
+    name: " Burger",
+    image:
+      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/e6b7e88c38bd9bace7d6f879246c2b2a",
+    price: 145,
+    description:
+      "Grilled paneer, fresh veggies, and tangy sauce on a soft bun.",
+    category: "Burgers",
+  },
+  {
+    _id: "37",
+    name: "Double Cheese Margherita",
+    image:
+      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/15c3a34b64ec4298f2a0778d1b008919",
+    price: 349,
+    description:
+      "A delightful blend of extra mozzarella, tangy tomato sauce, and fresh basil on a crispy crust.",
+    category: "Pizzas",
+  },
+  {
+    _id: "38",
+    name: "Cheese and Corn",
+    image:
+      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/25f8cd12a914066c7c9627d42eafd926",
+    price: 379,
+    description:
+      " Melted cheese and sweet corn on a crispy crust with tangy tomato sauce.",
+    category: "Pizzas",
+  },
+  {
+    _id: "39",
+    name: "Veggie Paradise",
+    image:
+      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/2a8ea479040d62f82871e1be7470672a",
+    price: 399,
+    description:
+      "A colorful mix of fresh veggies, mozzarella cheese, and tangy tomato sauce on a crispy crust.",
+    category: "Pizzas",
+  },
+  {
+    _id: "40",
+    name: "Farmhouse Pizza",
+    image:
+      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/96df50829eda0c0ffcc5169aeeb86a14",
+    price: 399,
+    description:
+      "A delicious blend of fresh veggies, mozzarella cheese, and savory tomato sauce on a crispy crust.",
+    category: "Pizzas",
+  },
+  {
+    _id: "41",
+    name: "Indian Tandoori Paneer",
+    image:
+      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/010b29da595df93d828ca0dca935821a",
+    price: 429,
+    description:
+      "Spicy tandoori paneer, crisp veggies, and tangy tomato sauce on a cheesy, crispy crust.",
+    category: "Pizzas",
+  },
+  {
+    _id: "42",
+    name: "Mexican Green",
+    image:
+      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/0d1949eef23c572096269d890e438efb",
+    price: 289,
+    description:
+      "A zesty mix of jalapeños, green peppers, and tangy salsa on a cheesy, crispy crust.",
+    category: "Pizzas",
+  },
+  {
+    _id: "43",
+    name: "Mexican Feast ",
+    image:
+      "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/0c4c12819d98a35144e3f08451ae64f3",
+    price: 259,
+    description:
+      "A zesty blend of jalapeños, green peppers, olives, and tangy salsa on a cheesy, crispy crust.",
+    category: "Pizzas",
   },
 ];
