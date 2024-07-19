@@ -29,7 +29,7 @@ const Offer = () => {
     <div className="offers-container">
       {offers.map((offer, index) => (
         <div className="card-hover" key={index}>
-          <h2>Hello Kimmi</h2>
+          <h2>Best Offer</h2>
           <div className="card-hover__content">
             <h3 className="card-hover__title">{offer.title}</h3>
             <p className="card-hover__text">{offer.text}</p>
