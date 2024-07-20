@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Zaikaa, a cutting-edge food delivery platform ",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "server":"nodemon server.js"
   },
