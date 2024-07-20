@@ -8,8 +8,12 @@ Zaikaa is a user-friendly food delivery application that connects food enthusias
 
 # Features
 
-User-Friendly Interface: A clean and modern design that enhances user experience and navigation.
-Menu Exploration: Browse through a diverse range of food items and restaurant menus.
-Dynamic Offers Page: View and interact with attractive offers and discounts.
-Search Functionality: Quickly find restaurants or food items with our intuitive search feature.
-Responsive Design: Optimized for various devices and screen sizes to provide a consistent experience across desktops, tablets, and smartphones.
+-User-Friendly Interface: A clean and modern design that enhances user experience and navigation.
+
+-Menu Exploration: Browse through a diverse range of food items and restaurant menus.
+
+-Dynamic Offers Page: View and interact with attractive offers and discounts.
+
+-Search Functionality: Quickly find restaurants or food items with our intuitive search feature.
+
+-Responsive Design: Optimized for various devices and screen sizes to provide a consistent experience across desktops, tablets, and smartphones.
