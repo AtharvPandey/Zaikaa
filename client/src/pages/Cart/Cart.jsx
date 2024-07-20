@@ -1,8 +1,13 @@
 import React, { useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
 import "./Cart.css";
+
 const Cart = () => {
-  const { cartItems, food_list, removeFromCart } = useContext(StoreContext);
+  const { cartItems, food_list, removeFromCart, getTotalCartAmount } =
+    useContext(StoreContext);
+
+  const totalCartAmount = getTotalCartAmount();
+  const deliveryCost = totalCartAmount > 500 ? 0 : 49;
 
   return (
     <div className="cart">
@@ -17,10 +22,10 @@ const Cart = () => {
         </div>
         <br />
         <hr />
-        {food_list.map((item, index) => {
+        {food_list.map((item) => {
           if (cartItems[item._id] > 0) {
             return (
-              <>
+              <React.Fragment key={item._id}>
                 <div className="cart-items-title cart-items-item">
                   <img src={item.image} alt="" />
                   <p>{item.name}</p>
@@ -32,10 +37,50 @@ const Cart = () => {
                   </p>
                 </div>
                 <hr />
-              </>
+              </React.Fragment>
             );
           }
+          return null;
         })}
+      </div>
+      <div className="cart-bottom">
+        <div className="cart-total">
+          <h2>Cart Totals</h2>
+          <div>
+            <div className="cart-total-details">
+              <p>Subtotal</p>
+              <p>₹ {totalCartAmount}</p>
+            </div>
+            <hr />
+            <div className="cart-total-details">
+              <p>Delivery</p>
+              <p>₹ {deliveryCost}</p>
+            </div>
+            <p className="delivery-condition">
+              {totalCartAmount > 500
+                ? "Congratulations! You have free delivery."
+                : "Add items worth ₹" +
+                  (500 - totalCartAmount) +
+                  " more for free delivery."}
+            </p>
+            <hr />
+            <div className="cart-total-details">
+              <b>Total</b>
+              <b>₹ {totalCartAmount + deliveryCost}</b>
+            </div>
+          </div>
+          <button>PROCEED TO CHECKOUT</button>
+        </div>
+
+        <div className="cart-promocode">
+          <div>
+            <p>If you have a promo code, enter it here</p>
+            <div className="cart-promocode-input">
+              <input type="text" placeholder="promo code" />
+              <button>Submit</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
