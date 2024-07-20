@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
+import { calculateDeliveryCost } from "./CalculateDeliveryCost";
 import "./Cart.css";
 
 const Cart = () => {
@@ -7,7 +9,10 @@ const Cart = () => {
     useContext(StoreContext);
 
   const totalCartAmount = getTotalCartAmount();
-  const deliveryCost = totalCartAmount > 500 ? 0 : 49;
+  const deliveryCost =
+    totalCartAmount === 0 ? 0 : calculateDeliveryCost(totalCartAmount);
+
+  const navigate = useNavigate();
 
   return (
     <div className="cart">
@@ -57,10 +62,10 @@ const Cart = () => {
               <p>₹ {deliveryCost}</p>
             </div>
             <p className="delivery-condition">
-              {totalCartAmount > 500
+              {totalCartAmount > 499
                 ? "Congratulations! You have free delivery."
                 : "Add items worth ₹" +
-                  (500 - totalCartAmount) +
+                  (499 - totalCartAmount) +
                   " more for free delivery."}
             </p>
             <hr />
@@ -69,7 +74,9 @@ const Cart = () => {
               <b>₹ {totalCartAmount + deliveryCost}</b>
             </div>
           </div>
-          <button>PROCEED TO CHECKOUT</button>
+          <button onClick={() => navigate("/order")}>
+            PROCEED TO CHECKOUT
+          </button>
         </div>
 
         <div className="cart-promocode">
