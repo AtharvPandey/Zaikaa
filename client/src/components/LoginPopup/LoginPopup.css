@@ -24,7 +24,7 @@ body.no-scroll {
   padding: 40px 40px;
   border-radius: 8px;
   font-size: 14px;
-  animation: fadeIn 0.7s;
+  animation: fadeIn 0.2s;
 }
 
 .login-popup-title {
