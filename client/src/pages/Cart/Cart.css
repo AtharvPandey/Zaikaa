@@ -81,6 +81,7 @@
   border: none;
   outline: none;
   padding-left: 10px;
+  font-size: 18px;
 }
 
 .cart-promocode-input button {
@@ -90,6 +91,7 @@
   border: none;
   color: white;
   border-radius: 4px;
+  font-size: 16px;
 }
 
 @media (max-width: 750px) {

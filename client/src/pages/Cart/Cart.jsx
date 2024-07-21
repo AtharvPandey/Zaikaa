@@ -5,7 +5,7 @@ import { calculateDeliveryCost } from "./CalculateDeliveryCost";
 import "./Cart.css";
 
 const Cart = () => {
-  const { cartItems, food_list, removeFromCart, getTotalCartAmount } =
+  const { cartItems, food_list, removeFromCart, getTotalCartAmount, url } =
     useContext(StoreContext);
 
   const totalCartAmount = getTotalCartAmount();
@@ -36,7 +36,7 @@ const Cart = () => {
             return (
               <React.Fragment key={item._id}>
                 <div className="cart-items-title cart-items-item">
-                  <img src={item.image} alt="" />
+                  <img src={url + "/images/" + item.image} alt="" />
                   <p>{item.name}</p>
                   <p>₹ {item.price}</p>
                   <p>{cartItems[item._id]}</p>
