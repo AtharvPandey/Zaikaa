@@ -1,32 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import "./Header.css";
 
 const Header = () => {
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    video.currentTime = 6.7; // Set the start time to 6.5 seconds
-
-    const handleTimeUpdate = () => {
-      if (video.currentTime >= 54.5) {
-        video.pause(); // Pause the video at 54.5 seconds
-        video.currentTime = 6.7; // Reset to start time
-        video.play(); // Restart the video from 6.5 seconds
-      }
-    };
-
-    video.addEventListener("timeupdate", handleTimeUpdate);
-
-    return () => {
-      video.removeEventListener("timeupdate", handleTimeUpdate);
-    };
-  }, []);
-
   return (
     <div className="header">
-      <video className="header-video" autoPlay muted loop ref={videoRef}>
-        <source src="/headerbackgroundvideo.webm" type="video/webm" />
+      <video className="header-video" autoPlay muted loop playsinline>
+        <source src="/headervideo.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
       <div className="header-contents">
