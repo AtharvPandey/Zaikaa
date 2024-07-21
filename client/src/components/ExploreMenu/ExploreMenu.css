@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 20px;
   position: relative; /* For absolute positioning of scroll slider */
+  padding: 10px;
 }
 
 .explore-menu h1 {

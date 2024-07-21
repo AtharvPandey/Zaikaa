@@ -3,6 +3,7 @@
   margin: 30px auto;
   position: relative;
   overflow: hidden; /* Ensure the video covers the entire header */
+  margin-top: 85px;
 }
 
 .header-video {
@@ -14,6 +15,7 @@
   object-fit: cover; /* Cover the entire header */
   z-index: -1; /* Place the video behind the contents */
   border-radius: 60px;
+  padding: 5px;
 }
 
 .header-contents {

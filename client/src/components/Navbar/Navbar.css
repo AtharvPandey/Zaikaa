@@ -3,6 +3,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 82%;
+  background-color: white;
 }
 
 .navbar .logo {
@@ -62,6 +67,9 @@
 }
 
 @media (max-width: 1050px) {
+  .navbar {
+    width: 90%;
+  }
   .navbar .logo {
     width: 140px;
   }
@@ -81,6 +89,9 @@
 }
 
 @media (max-width: 900px) {
+  .navbar {
+    width: 90%;
+  }
   .navbar .logo {
     width: 120px;
   }
@@ -103,5 +114,40 @@
 @media (max-width: 750px) {
   .navbar-menu {
     display: none;
+  }
+  .navbar {
+    width: 90%;
+  }
+  .navbar .logo {
+    width: 100px;
+  }
+  .navbar-right {
+    gap: 10px;
+  }
+  .navbar-right img {
+    width: 18px;
+  }
+  .navbar-right button {
+    padding: 5px 15px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 450px) {
+  .navbar {
+    width: 90%;
+  }
+  .navbar .logo {
+    width: 100px;
+  }
+  .navbar-right {
+    gap: 10px;
+  }
+  .navbar-right img {
+    width: 18px;
+  }
+  .navbar-right button {
+    padding: 5px 15px;
+    font-size: 14px;
   }
 }
