@@ -7,6 +7,16 @@ import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 import Footer from "./components/Footer/Footer";
 import LoginPopup from "./components/LoginPopup/LoginPopup";
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
 
@@ -15,7 +25,7 @@ const App = () => {
       {showLogin ? (
         <LoginPopup setShowLogin={setShowLogin} />
       ) : (
-        <>
+        <div>
           <div className="app">
             <Navbar setShowLogin={setShowLogin} />
             <Routes>
@@ -25,7 +35,7 @@ const App = () => {
             </Routes>
           </div>
           <Footer />
-        </>
+        </div>
       )}
     </>
   );
