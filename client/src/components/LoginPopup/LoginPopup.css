@@ -7,19 +7,20 @@ body.no-scroll {
   z-index: 1;
   width: 100%;
   height: 100%;
-  background-color: #00000090;
+  /* background-color: #f0f0f089; */
+  background: url("/loginbackground.jpg");
   display: grid;
 }
 
 .login-popup-container {
   place-self: center;
-  width: max(20vw, 330px);
+  width: max(20vw, 350px);
   color: #808080;
   background-color: white;
   display: flex;
   flex-direction: column;
   gap: 25px;
-  padding: 25px 30px;
+  padding: 40px 40px;
   border-radius: 8px;
   font-size: 14px;
   animation: fadeIn 0.5s;
@@ -55,7 +56,7 @@ body.no-scroll {
   padding: 10px;
   border-radius: 4px;
   color: white;
-  background-color: #f49619;
+  background-color: #34571a;
   font-size: 15px;
   cursor: pointer;
 }
@@ -72,7 +73,7 @@ body.no-scroll {
 }
 
 .login-popup p span {
-  color: #f49619;
+  color: #34571a;
   font-weight: 500;
   cursor: pointer;
 }
