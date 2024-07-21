@@ -10,6 +10,7 @@ body.no-scroll {
   /* background-color: #f0f0f089; */
   background: url("/loginbackground.jpg");
   display: grid;
+  animation: fadeIn 0.7s;
 }
 
 .login-popup-container {
@@ -23,7 +24,7 @@ body.no-scroll {
   padding: 40px 40px;
   border-radius: 8px;
   font-size: 14px;
-  animation: fadeIn 0.5s;
+  animation: fadeIn 0.7s;
 }
 
 .login-popup-title {
