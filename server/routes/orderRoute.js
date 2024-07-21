@@ -1,10 +1,13 @@
 import express from "express";
 import authMiddleware from "../middleware/auth.js";
-import { placeOrder } from "../controllers/orderController.js";
+import { placeOrder, verifyPayment } from "../controllers/orderController.js";
 
 const orderRouter = express.Router();
 
-//placeorder
+// Place order
 orderRouter.post("/place", authMiddleware, placeOrder);
+
+// Verify payment
+orderRouter.post("/verify-payment", verifyPayment);
 
 export default orderRouter;
