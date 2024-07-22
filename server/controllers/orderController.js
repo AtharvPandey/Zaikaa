@@ -4,29 +4,30 @@ import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
+//placing user order from frontend
 const placeOrder = async (req, res) => {
   // const frontend_url = "http://localhost:5173";
   const frontend_url = "https://zaikaa.vercel.app";
 
   try {
-    const { userId, items, amount, address } = req.body;
+    // const { userId, items, amount, address } = req.body;
 
     // Create a new order
     const newOrder = new orderModel({
-      userId: userId,
-      items: items,
-      amount: amount,
-      address: address,
+      userId: req.body.userId,
+      items: req.body.items,
+      amount: req.body.amount,
+      address: req.body.address,
     });
 
     // Save the order in the database
     await newOrder.save();
 
     // Clear the user's cart data
-    await userModel.findByIdAndUpdate(userId, { cartData: {} });
+    await userModel.findByIdAndUpdate(req.body.userId, { cartData: {} });
 
     // Create line items for Stripe session
-    const line_items = items.map((item) => ({
+    const line_items = req.body.items.map((item) => ({
       price_data: {
         currency: "INR",
         product_data: {
