@@ -10,7 +10,7 @@ const razorpay = new Razorpay({
 });
 
 const placeOrder = async (req, res) => {
-  const frontend_url = "http://localhost:5173"; // Update this to your frontend URL
+  const frontend_url = "https://zaikaa.vercel.app"; // Update this to your frontend URL
 
   try {
     const newOrder = new orderModel({
@@ -26,7 +26,7 @@ const placeOrder = async (req, res) => {
     // Calculate the total amount
     const line_items = req.body.items.map((item) => ({
       name: item.name,
-      amount: item.price * 100 * 83, // in paise (smallest unit of INR)
+      amount: item.price * 100, // in paise
       currency: "INR",
       quantity: item.quantity,
     }));
@@ -58,7 +58,7 @@ const placeOrder = async (req, res) => {
       amount: order.amount,
       currency: order.currency,
       key: process.env.RAZORPAY_KEY_ID,
-      name: "Zaikaa",
+      name: "Zaikaa food app",
       description: "Order Payment",
       prefill: {
         name: req.body.name,
@@ -69,13 +69,13 @@ const placeOrder = async (req, res) => {
         address: req.body.address,
       },
       theme: {
-        color: "#F37254",
+        color: "#f2ae1c",
       },
       success_url: `${frontend_url}/verify?success=true&orderId=${newOrder._id}`,
       cancel_url: `${frontend_url}/verify?success=false&orderId=${newOrder._id}`,
     });
   } catch (error) {
-    console.log(error);
+    console.log("Error placing order:", error);
     res.json({ success: false, message: "Error" });
   }
 };
@@ -94,4 +94,22 @@ const verifyPayment = (req, res) => {
   }
 };
 
-export { placeOrder, verifyPayment };
+const verifyOrder = async (req, res) => {
+  const { orderId, success } = req.body; // Ensure the key names match the ones in your frontend
+  try {
+    if (success === "true") {
+      // Update order with the correct ID
+      await orderModel.findOneAndUpdate({ _id: orderId }, { payment: true });
+      res.json({ success: true, message: "paid" });
+    } else {
+      // Delete order with the correct ID
+      await orderModel.findOneAndDelete({ _id: orderId });
+      res.json({ success: false, message: "NotPaid" });
+    }
+  } catch (error) {
+    console.log("Error verifying order:", error);
+    res.json({ success: false, message: "Error" });
+  }
+};
+
+export { placeOrder, verifyPayment, verifyOrder };

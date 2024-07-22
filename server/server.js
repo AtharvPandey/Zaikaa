@@ -27,10 +27,6 @@ app.use("/api/user", userRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);
 
-app.get("/", (req, res) => {
-  res.send("API Working");
-});
-
 // Razorpay initialization
 const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID,
@@ -50,6 +46,10 @@ app.post("/api/payment/verify", (req, res) => {
   } else {
     res.status(400).json({ success: false, message: "Invalid signature" });
   }
+});
+
+app.get("/", (req, res) => {
+  res.send("API Working");
 });
 
 app.listen(port, () => {
