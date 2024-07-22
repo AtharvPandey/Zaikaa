@@ -6,6 +6,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const placeOrder = async (req, res) => {
   const frontend_url = "http://localhost:5173";
+  // https://zaikaa.vercel.app/
 
   try {
     const { userId, items, amount, address } = req.body;
