@@ -7,28 +7,38 @@ import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 import "dotenv/config"; // Import dotenv to use environment variables
 
-// app config
+// App config
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000; // Use environment variable for port if available
 
-// middleware
+// Middleware
 app.use(express.json());
-app.use(cors());
 
-// db connection
+// Configure CORS to allow requests from specific origins
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://zaikaa.vercel.app"], // Your frontend URLs
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // Allow cookies and authentication headers
+  })
+);
+
+// Database connection
 connectDB();
 
-//api end point
+// API endpoints
 app.use("/api/food", foodRouter);
 app.use("/images", express.static("uploads"));
 app.use("/api/user", userRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);
 
+// Root endpoint
 app.get("/", (req, res) => {
   res.send("API Working");
 });
 
+// Start the server
 app.listen(port, () => {
-  console.log(`server started on http://localhost:${port}`);
+  console.log(`Server started on http://localhost:${port}`);
 });
