@@ -36,90 +36,34 @@ const PlaceOrder = () => {
 
   const placeOrder = async (event) => {
     event.preventDefault();
-
     let orderItems = [];
     food_list.map((item) => {
+      let itemInfo = { ...item }; // Create a copy of the item object
       if (cartItems[item._id] > 0) {
-        let itemInfo = item;
         itemInfo["quantity"] = cartItems[item._id];
-        orderItems.push(itemInfo);
+        orderItems.push(itemInfo); // Only push itemInfo if it has a quantity
       }
     });
+    console.log(orderItems);
+
+    // genereate order data
 
     let orderData = {
       address: data,
       items: orderItems,
       amount: totalCartAmount + deliveryCost,
-      userId: "YOUR_USER_ID", // Add the actual user ID here
     };
+    // send the order data to our api
+    let response = await axios.post(url + "/api/order/place", orderData, {
+      headers: { token },
+    }); // url = backend url
 
-    try {
-      const response = await axios.post(url + "/api/order/place", orderData, {
-        headers: { token },
-      });
-
-      if (response.data.success) {
-        const {
-          order_id,
-          amount,
-          key,
-          name,
-          description,
-          prefill,
-          notes,
-          theme,
-        } = response.data;
-
-        // Load Razorpay script dynamically
-        const script = document.createElement("script");
-        script.src = "https://checkout.razorpay.com/v1/checkout.js";
-        script.async = true;
-        document.body.appendChild(script);
-
-        script.onload = () => {
-          const options = {
-            key: key, // Razorpay Key ID
-            amount: amount, // Amount in paise
-            currency: "INR",
-            name: name,
-            description: description,
-            order_id: order_id,
-            prefill: prefill,
-            notes: notes,
-            theme: theme,
-            handler: function (response) {
-              axios
-                .post(`${url}/api/payment/verify`, {
-                  order_id: order_id,
-                  payment_id: response.razorpay_payment_id,
-                  razorpay_signature: response.razorpay_signature,
-                })
-                .then((res) => {
-                  if (res.data.success) {
-                    alert("Payment Successful");
-                    navigate(`/verify?success=true&orderId=${order_id}`);
-                  } else {
-                    alert("Payment Verification Failed");
-                    navigate(`/verify?success=false&orderId=${order_id}`);
-                  }
-                });
-            },
-            modal: {
-              ondismiss: function () {
-                navigate(`/verify?success=false&orderId=${order_id}`);
-              },
-            },
-          };
-
-          const paymentObject = new window.Razorpay(options);
-          paymentObject.open();
-        };
-      } else {
-        alert("Error");
-      }
-    } catch (error) {
-      console.error("Error placing order:", error);
-      alert("Error placing order");
+    if (response.data.success) {
+      // using this we get the session url
+      const { session_url } = response.data;
+      window.location.replace(session_url); //sending user session url
+    } else {
+      alert("Error");
     }
   };
 
@@ -241,3 +185,4 @@ const PlaceOrder = () => {
 };
 
 export default PlaceOrder;
+
