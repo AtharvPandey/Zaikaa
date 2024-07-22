@@ -11,6 +11,8 @@ const Verify = () => {
   const { url } = useContext(StoreContext);
   const navigate = useNavigate();
 
+  console.log(success, orderId);
+
   const verifyPayment = async () => {
     const response = await axios.post(url + "/api/order/verify", {
       success,
@@ -35,4 +37,3 @@ const Verify = () => {
 };
 
 export default Verify;
-
