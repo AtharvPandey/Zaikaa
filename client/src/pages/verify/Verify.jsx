@@ -5,33 +5,43 @@ import { StoreContext } from "../../context/StoreContext";
 import axios from "axios";
 
 const Verify = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const success = searchParams.get("success");
   const orderId = searchParams.get("orderId");
   const { url } = useContext(StoreContext);
   const navigate = useNavigate();
 
-  console.log(success, orderId);
+  useEffect(() => {
+    const verifyPayment = async () => {
+      try {
+        const response = await axios.post(`${url}/api/order/verify`, {
+          success,
+          orderId,
+        });
 
-  const verifyPayment = async () => {
-    const response = await axios.post(url + "/api/order/verify", {
-      success,
-      orderId,
-    });
-    if (response.data.success) {
-      navigate("/myorders");
+        if (response.data.success) {
+          navigate("/myorders");
+        } else {
+          navigate("/");
+        }
+      } catch (error) {
+        console.error("Error verifying payment:", error);
+        navigate("/");
+      }
+    };
+
+    if (success !== null && orderId) {
+      verifyPayment();
     } else {
+      console.error("Missing success or orderId parameter");
       navigate("/");
     }
-  };
-
-  useEffect(() => {
-    verifyPayment();
-  }, []);
+  }, [success, orderId, url, navigate]);
 
   return (
     <div className="verify">
       <div className="spinner"></div>
+      <p>Verifying payment...</p>
     </div>
   );
 };
