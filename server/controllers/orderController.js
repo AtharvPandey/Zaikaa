@@ -58,6 +58,7 @@ const placeOrder = async (req, res) => {
       amount: order.amount,
       currency: order.currency,
       key: process.env.RAZORPAY_KEY_ID,
+      payment: true,
       name: "Zaikaa food app",
       description: "Order Payment",
       prefill: {
