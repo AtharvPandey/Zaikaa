@@ -4,7 +4,7 @@ import "./Header.css";
 const Header = () => {
   return (
     <div className="header">
-      <video className="header-video" autoPlay muted loop playsinline>
+      <video className="header-video" autoPlay muted loop >
         <source src="/headervideo.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
