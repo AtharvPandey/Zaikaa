@@ -7,40 +7,30 @@
 // import orderRouter from "./routes/orderRoute.js";
 // import "dotenv/config"; // Import dotenv to use environment variables
 
-// // App config
+// // app config
 // const app = express();
-// const port = process.env.PORT || 4000; // Use environment variable for port if available
+// const port = 4000;
 
-// // Middleware
+// // middleware
 // app.use(express.json());
+// app.use(cors());
 
-// // Configure CORS to allow requests from specific origins
-// app.use(
-//   cors({
-//     origin: ["http://localhost:5173", "https://zaikaa.vercel.app"], // Your frontend URLs
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     credentials: true, // Allow cookies and authentication headers
-//   })
-// );
-
-// // Database connection
+// // db connection
 // connectDB();
 
-// // API endpoints
+// //api end point
 // app.use("/api/food", foodRouter);
 // app.use("/images", express.static("uploads"));
 // app.use("/api/user", userRouter);
 // app.use("/api/cart", cartRouter);
 // app.use("/api/order", orderRouter);
 
-// // Root endpoint
 // app.get("/", (req, res) => {
 //   res.send("API Working");
 // });
 
-// // Start the server
 // app.listen(port, () => {
-//   console.log(`Server started on http://localhost:${port}`);
+//   console.log(`server started on http://localhost:${port}`);
 // });
 
 import express from "express";
@@ -50,20 +40,31 @@ import foodRouter from "./routes/foodRoute.js";
 import userRouter from "./routes/userRoute.js";
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
-import "dotenv/config"; // Import dotenv to use environment variables
+import { handleStripeWebhook } from "./controllers/orderController.js";
+import "dotenv/config";
 
-// app config
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 
-// middleware
+// Middleware
+app.use(
+  cors({
+    origin: "https://zaikaa.vercel.app",
+  })
+);
 app.use(express.json());
-app.use(cors());
 
-// db connection
+// Stripe webhook must use raw body
+app.post(
+  "/api/stripe/webhook",
+  express.raw({ type: "application/json" }),
+  handleStripeWebhook
+);
+
+// DB Connection
 connectDB();
 
-//api end point
+// API Endpoints
 app.use("/api/food", foodRouter);
 app.use("/images", express.static("uploads"));
 app.use("/api/user", userRouter);
@@ -74,6 +75,7 @@ app.get("/", (req, res) => {
   res.send("API Working");
 });
 
+// Start Server
 app.listen(port, () => {
   console.log(`server started on http://localhost:${port}`);
 });
