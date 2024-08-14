@@ -11,6 +11,7 @@ const Verify = () => {
   const { url } = useContext(StoreContext);
   const navigate = useNavigate();
 
+
   useEffect(() => {
     const verifyPayment = async () => {
       try {
