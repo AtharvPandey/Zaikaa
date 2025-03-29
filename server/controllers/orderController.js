@@ -104,7 +104,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 // Place Order Function
 const placeOrder = async (req, res) => {
-  const frontend_url = "http://localhost:5173";
+  const frontend_url = "https://zaikaa.vercel.app";
 
   try {
     // Create a new order
